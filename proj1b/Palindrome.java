@@ -8,6 +8,32 @@ public class Palindrome {
         return wordDeque;
     }
     public boolean isPalindrome(String word) {
+        Deque<Character> dq = wordToDeque(word);
+        int front = 0, back = dq.size()-1;
+        while (front < back) {
+            if (dq.get(front) == dq.get(back)) {
+                front++;
+                back--;
+            }
+            else{
+                return false;
+            }
+        }
+        return true;
+    }
+    public boolean isPalindrome(String word, CharacterComparator cc) {
+        Deque<Character> dq = wordToDeque(word);
+        int front = 0, back = dq.size()-1;
+        while (front < back) {
+            if (cc.equalChars(dq.get(front), dq.get(back))) {
+                front++;
+                back--;
+            }
+            else{
+                return false;
+            }
+        }
+
         return true;
     }
 }
